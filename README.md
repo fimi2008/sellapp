@@ -20,3 +20,12 @@ npm run build --report
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
++ 下面三个样式搭配使用，只显示一行，多出部分显示。。。
+
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      
++ 实现滤镜效果
+    
+      filter: blur(10px)

@@ -1,14 +1,187 @@
 <template>
   <div class="header">
-    我是header
+    <div class="content-wrapper">
+      <div class="avatar">
+        <img :src="seller.avatar" width="64" height="64" alt="">
+      </div>
+      <div class="seller-content">
+        <div class="title">
+          <span class="brand"></span>
+          <span class="name">{{seller.name}}</span>
+        </div>
+        <p class="seller-dispatch">
+          {{seller.description}}/{{seller.deliveryTime}}分钟送达
+        </p>
+        <div v-if="seller.supports" class="seller-supports">
+          <!--定义classMap根据接口返回数据type，下标确定class-->
+          <span class="icon" :class="classMap[seller.supports[0].type]"></span>
+          <span class="text">{{seller.supports[0].description}}</span>
+        </div>
+      </div>
+      <div v-if="seller.supports" class="seller-supports-size" @click="showDetail">
+        <span class="size">{{seller.supports.length}}个</span>
+        <i class="icon-keyboard_arrow_right"></i>
+      </div>
+    </div>
+    <div class="notice-wrapper" @click="showDetail">
+      <span class="notice-icon"></span><span class="notice-content">{{seller.bulletin}}</span>
+      <i class="icon-keyboard_arrow_right"></i>
+    </div>
+    <div class="background">
+      <img :src="seller.avatar" width="100%" height="100%">
+    </div>
+    <div v-show="detailShow" class="detail"></div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
+    props: {
+      seller: {
+        // 定义组件传递而来的参数类型
+        type: Object
+      }
+    },
+    data () {
+      return {
+        detailShow: false
+      }
+    },
+    methods: {
+      showDetail () {
+        this.detailShow = true
+      }
+    },
+    created () {
+//      在created方法中定义一个classMap来定义折扣类型
+      this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
+    }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../../common/stylus/mixin.styl"
+
+  .header
+    position: relative
+    overflow: hidden
+    color: #fff
+    background: rgba(7, 17, 27, 0.5)
+    .content-wrapper
+      position: relative
+      padding: 24px 12px 18px 24px
+      font-size: 0
+      .avatar
+        display: inline-block
+        vertical-align: top
+        img
+          border-radius: 2px
+      .seller-content
+        display: inline-block
+        margin-left 16px
+        .title
+          margin: 2px 0 8px 0
+          .brand
+            display: inline-block
+            width: 30px
+            height: 18px
+            bg-image('brand')
+            background-size: 30px 18px
+            background-repeat: no-repeat
+            vertical-align: top
+          .name
+            margin-left: 6px
+            font-size: 16px
+            font-weight: bold
+            line-height: 18px
+        .seller-dispatch
+          margin-bottom: 10px
+          line-height: 12px
+          font-size: 12px
+        .seller-supports
+          margin-bottom: 2px
+          .icon
+            display: inline-block
+            vertical-align: top
+            width: 12px
+            height: 12px
+            margin-right: 4px
+            background-size: 12px 12px
+            background-repeat: no-repeat
+            &.decrease
+              bg-image('decrease_1')
+            &.discount
+              bg-image('discount_1')
+            &.guarantee
+              bg-image('guarantee_1')
+            &.invoice
+              bg-image('invoice_1')
+            &.special
+              bg-image('special_1')
+          .text
+            font-size: 10px
+            line-height: 12px
+      .seller-supports-size
+        position: absolute
+        right: 12px
+        bottom: 14px
+        padding: 0 8px
+        height: 24px
+        line-height: 24px
+        border-radius: 14px
+        background: rgba(0, 0, 0, 0.2)
+        text-align: center
+        .size
+          vertical-align: top
+          font-size: 10px
+        .icon-keyboard_arrow_right
+          line-height: 24px
+          font-size: 10px
+          margin-left: 2px
+    .notice-wrapper
+      position: relative
+      height: 28px
+      line-height 28px
+      padding: 0 22px 0 12px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      background: rgba(7, 17, 27, 0.2)
+      .notice-icon
+        display: inline-block
+        vertical-align: top
+        margin-top: 8px
+        width: 22px
+        height: 12px
+        bg-image('bulletin')
+        background-size: 22px 12px
+        background-repeat: no-repeat
+      .notice-content
+        vertical-align: top
+        margin: 0 4px
+        font-size: 10px
+      .icon-keyboard_arrow_right
+        position: absolute
+        font-size: 10px
+        right: 12px
+        top: 8px
+    .background
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      z-index: -1
+      filter: blur(10px)
+    .detail
+      position: fixed
+      z-index: 100
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      overflow: auto
+      background: rgba(7, 17, 27, 0.8)
+      filter: blur(10px)
 
 </style>

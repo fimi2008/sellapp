@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App'
+import VueResource from 'vue-resource'
 import goods from './components/goods/goods.vue'
 import ratings from './components/ratings/ratings.vue'
 import seller from './components/seller/seller.vue'
@@ -18,6 +19,8 @@ Vue.config.productionTip = false
  * Vue.use(VueRouter)
  */
 Vue.use(VueRouter)
+// 使用VueResource
+Vue.use(VueResource)
 
 // 2. 定义路由
 // 每个路由应该映射一个组件。 其中"component" 可以是

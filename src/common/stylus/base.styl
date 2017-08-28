@@ -1,12 +1,18 @@
+body, html
+  line-height: 1
+  font-width: 200
+  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', Arial, sans-serif
+
 // 针对设备像素比为1.5的进行缩放0.7
 @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
   .border-1px
     &::after
-      -webkit-transform :scaleY(0.7)
-      transform :scaleY(0.7)
+      -webkit-transform: scaleY(0.7)
+      transform: scaleY(0.7)
+
 // 针对设备像素比为2的进行缩放0.5
 @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
   .border-1px
     &::after
-      -webkit-transform :scaleY(0.5)
-      transform :scaleY(0.5)
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
