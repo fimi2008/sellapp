@@ -29,3 +29,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 + 实现滤镜效果
     
       filter: blur(10px)
+
++ 背景毛玻璃效果（仅支持ios，安装不支持）   
+       
+       backdrop-filter: blur(10px)
