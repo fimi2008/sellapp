@@ -33,3 +33,6 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 + 背景毛玻璃效果（仅支持ios，安装不支持）   
        
        backdrop-filter: blur(10px)
+       
++ "better-scroll": "^0.1.7" 插件使用
+  使用版本："0.1.15" v-el 更改为 ref

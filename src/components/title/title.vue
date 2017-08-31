@@ -22,7 +22,7 @@
     .line
       flex: 1
       position: relative
-      top: -6px
+      top: -7px
       border-bottom: 1px solid rgba(255, 255, 255, 0.2)
     .text
       padding: 0 12px
