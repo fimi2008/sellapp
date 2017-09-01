@@ -30,6 +30,9 @@
                   <span class="now">¥{{food.price}}</span>
                   <span class="old" v-if="food.oldPrice">¥{{food.oldPrice}}</span>
                 </div>
+                <div class="cartcontrol-wrapper">
+                  <cartcontrol :food="food"></cartcontrol>
+                </div>
               </div>
             </li>
           </ul>
@@ -43,6 +46,7 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
   import shopcart from '../shopcart/shopcart.vue'
+  import cartcontrol from '../cartcontrol/cartcontrol.vue'
 
   const ERR_OK = 0
   export default {
@@ -90,7 +94,7 @@
     methods: {
       _initScroll () {
         this.menuScroll = new BScroll(this.$refs.menuWrapper, {click: true})
-        this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {probeType: 3})
+        this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {probeType: 3, click: true})
         this.foodsScroll.on('scroll', (pos) => {
           // 判断滑动方向，避免下拉时分类高亮错误（如第一分类商品数量为1时，下拉使得第二分类高亮）
           if (pos.y <= 0) {
@@ -118,7 +122,8 @@
       }
     },
     components: {
-      shopcart: shopcart
+      shopcart: shopcart,
+      cartcontrol: cartcontrol
     }
   }
 </script>
@@ -226,6 +231,8 @@
               text-decoration: line-through
               font-size: 10px
               color: rgb(147, 153, 159)
-
-
+          .cartcontrol-wrapper
+            position: absolute
+            right: 0
+            bottom: 12px
 </style>
