@@ -35,4 +35,20 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
        backdrop-filter: blur(10px)
        
 + "better-scroll": "^0.1.7" 插件使用
-  使用版本："0.1.15" v-el 更改为 ref
+  
+       使用版本："0.1.15" v-el 更改为 ref
+    
+       几个重要接口
+       this.foodsScroll.on('scroll', (pos) => {
+        // 判断滑动方向，避免下拉时分类高亮错误（如第一分类商品数量为1时，下拉使得第二分类高亮）
+          if (pos.y <= 0) {
+            this.scrollY = Math.abs(Math.round(pos.y))
+          }
+        })
+      
+       this.$nextTick(() => {
+          this._initScroll()
+          this._calculateHeight()
+        })
+                        
+        this.foodsScroll.scrollToElement(el, 300)
