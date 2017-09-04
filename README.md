@@ -75,3 +75,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
              // 定义该组件所引用的其他组件
           }
         }
+
++ vue 中阻止事件冒泡修饰符
+  
+      @click.stop.prevent
