@@ -52,3 +52,26 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
         })
                         
         this.foodsScroll.scrollToElement(el, 300)
+        
++ export 一个属性解释（个人理解）
+    
+      export default{
+          props:{
+              // 定义传递而来的参数
+          },
+          data(){
+              // 定义该组件下的全局参数
+          },
+          computed:{
+              // 定义计算参数(注意：所以的计算属性的值都要return)
+          },
+          created(){
+              // 类似于init方法
+          },
+          methods(){
+              // 定义函数
+          },
+          components:{
+             // 定义该组件所引用的其他组件
+          }
+        }

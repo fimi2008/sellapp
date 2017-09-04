@@ -26,7 +26,6 @@
         if (!event._constructed) {
           return
         }
-        console.log('click')
         if (!this.food.count) {
           Vue.set(this.food, 'count', 1)
         } else {
@@ -37,7 +36,6 @@
         if (!event._constructed) {
           return
         }
-        console.log('click')
         if (this.food.count) {
           this.food.count--
         }
