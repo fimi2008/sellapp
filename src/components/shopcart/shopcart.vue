@@ -137,7 +137,6 @@
         for (let i = 0; i < this.balls.length; i++) {
           let ball = this.balls[i]
           if (!ball.show) {
-            console.log('drop....')
             ball.show = true
             ball.el = el
             this.dropBalls.push(ball)
@@ -371,7 +370,6 @@
             position: absolute
             right: 0
             bottom: 6px
-
   .list-mask
     position: fixed
     top: 0
