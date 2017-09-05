@@ -71,6 +71,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
           methods(){
               // 定义函数
           },
+          filters:{
+              // 定义过滤器
+          },
           components:{
              // 定义该组件所引用的其他组件
           }
@@ -92,4 +95,21 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
       调用父组件中
       <food  @add="addFood" :food="selectedFood" ref="food"></food>
       @add 对应的方法 addFood
+      
++ vue 中过滤器的使用
+
+      如何调用：
+       {{rating.rateTime | formatDate}}
+      组件如何定义过滤器：
+       filters: {
+          formatDate (time) {
+            let date = new Date(time)
+            return formatDate(date, 'yyyy-MM-dd hh:mm')
+          }
+       }
+      如何引用common中的js
+        import {formatDate} from '../../common/js/date.js'
+        因为js中formatDate是如下定义的，所以import的时候需要加‘{}’
+        export function formatDate (date, fmt){/.../}
+      
        
