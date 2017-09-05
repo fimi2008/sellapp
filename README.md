@@ -79,3 +79,17 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 + vue 中阻止事件冒泡修饰符
   
       @click.stop.prevent
+      
++ vue 中函数命名准则
+  + 内部组件使用的函数，函数名以“_”开头
+  + 外部组件调用的函数，函数名不以“_”开头
+  + 可仿照本例中goods组件
+  
++ vue 中子组件调用父组件的方法
+    
+      子组件通过
+      this.$emit('add', target)
+      调用父组件中
+      <food  @add="addFood" :food="selectedFood" ref="food"></food>
+      @add 对应的方法 addFood
+       
