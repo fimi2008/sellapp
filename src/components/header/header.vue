@@ -39,7 +39,7 @@
               <star :size="48" :score="seller.score"></star>
             </div>
             <div class="title-wrapper">
-              <tit content="优惠信息"></tit>
+              <titlecontent content="优惠信息"></titlecontent>
             </div>
             <ul v-if="seller.supports" class="supports">
               <li class="support-item" v-for="item in seller.supports">
@@ -48,7 +48,7 @@
               </li>
             </ul>
             <div class="title-wrapper">
-              <tit content="商家公告"></tit>
+              <titlecontent content="商家公告"></titlecontent>
             </div>
             <div class="bulletin">
               <p class="content">{{seller.bulletin}}</p>
@@ -65,7 +65,7 @@
 
 <script type="text/ecmascript-6">
   import star from '../star/star.vue'
-  import tit from '../title/title.vue'
+  import titlecontent from '../titlecontent/titlecontent.vue'
 
   export default {
     props: {
@@ -93,7 +93,7 @@
     },
     components: {
       star,
-      tit
+      titlecontent
     }
   }
 </script>

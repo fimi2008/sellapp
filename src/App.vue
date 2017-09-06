@@ -6,7 +6,7 @@
         <router-link to="/goods">商品</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="/ratings">评论</router-link>
+        <router-link to="/ratings">评价</router-link>
       </div>
       <div class="tab-item">
         <router-link to="/seller">商家</router-link>
@@ -14,7 +14,10 @@
     </div>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <router-view :seller="seller"></router-view>
+    <!--如果把切换出去的组件保留在内存中，可以保留它的状态或避免重新渲染。为此可以添加一个 keep-alive 指令参数：-->
+    <!--<keep-alive>-->
+      <router-view :seller="seller"></router-view>
+    <!--</keep-alive>-->
   </div>
 </template>
 
@@ -48,14 +51,14 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "common/stylus/mixin.styl"
+  @import "./common/stylus/mixin.styl"
 
   .tab
     display: flex
     width: 100%
     height: 40px
     line-height: 40px
-  //border-bottom 1px solid rgba(7,17,27,0.1)
+    //border-bottom 1px solid rgba(7,17,27,0.1)
     border-1px(rgba(7, 17, 27, 0.1))
     .tab-item
       flex: 1

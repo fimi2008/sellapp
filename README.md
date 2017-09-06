@@ -111,5 +111,13 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
         import {formatDate} from '../../common/js/date.js'
         因为js中formatDate是如下定义的，所以import的时候需要加‘{}’
         export function formatDate (date, fmt){/.../}
+        
++ 如何兼容小屏幕样式(@media 判断屏幕宽度)
+  
+      .overview-right
+          flex: 1
+          padding: 6px 0 6px 24px
+          @media only screen and (max-width: 320px)
+            padding-left: 6px
       
        
