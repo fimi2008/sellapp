@@ -2,7 +2,7 @@
   <div class="goods">
     <div class="menu-wrapper" ref="menuWrapper">
       <ul>
-        <li v-for="(item,index) in goods" class="menu-item" :class="{'current':currentIndex===index}"
+        <li v-for="(item,index) in goods" class="menu-item menu-item-hook" :class="{'current':currentIndex===index}"
             @click="selectMenu(index, $event)">
           <span class="text border-1px">
             <span v-if="item.type>0" class="icon" :class="classMap[item.type]"></span>
@@ -52,7 +52,7 @@
   import food from '../food/food.vue'
   import api from '../../api/api.js'
 
-//  const ERR_OK = 0
+  //  const ERR_OK = 0
   export default {
     props: {
       seller: {
@@ -64,6 +64,7 @@
       return {
         goods: [],
         listHeight: [],
+        menuHeight: [],
         scrollY: 0,
         selectedFood: {}
       }
@@ -74,6 +75,11 @@
           let height1 = this.listHeight[i]
           let height2 = this.listHeight[i + 1]
           if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
+            if (this.menuScroll) {
+              let menuList = this.$refs.menuWrapper.getElementsByClassName('menu-item-hook')
+              let el = menuList[i]
+              this.menuScroll.scrollToElement(el, 300)
+            }
             return i
           }
         }
@@ -135,6 +141,14 @@
           let item = foodList[i]
           height += item.clientHeight
           this.listHeight.push(height)
+        }
+        let menuList = this.$refs.menuWrapper.getElementsByClassName('menu-item-hook')
+        height = 0
+        this.menuHeight.push(height)
+        for (let i = 0; i < menuList.length; i++) {
+          let item = menuList[i]
+          height += item.clientHeight
+          this.menuHeight.push(height)
         }
       },
       selectMenu (index, event) {

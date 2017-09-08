@@ -1,7 +1,7 @@
 import axios from 'axios'
 import address from './address.js'
 
-let baseURL = 'http://localhost:8008/api'
+let baseURL = 'http://10.1.60.43:8008/api'
 const request = axios.create({
   baseURL: baseURL
 })
