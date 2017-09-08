@@ -161,7 +161,7 @@
     transform: translate3d(0, 0, 0)
     &.move-enter-active, &.move-leave-active //元素插入时过渡状态&元素删除时过渡状态
       transition: all .2s linear
-    &.move-enter, &.move-leave-to
+    &.move-enter, &.move-leave-active
       transform: translate3d(-100%, 0, 0)
     .image-header
       position: relative
@@ -234,7 +234,7 @@
         opacity: 1
         &.fade-enter-active, &.fade-leave-active //元素插入时过渡状态&元素删除时过渡状态
           transition: all .2s linear
-        &.fade-enter, &.fade-leave-to
+        &.fade-enter, &.fade-leave-active
           opacity: 0
           z-index: -1
     .info

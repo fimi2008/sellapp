@@ -20,6 +20,12 @@ npm run build --report
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
++ vue 架手架使用
+  
+      vue list   查询可用脚手架模板
+      vue init webpack <工程名>    使用webpack脚手架
+    
+
 + 下面三个样式搭配使用，只显示一行，多出部分显示。。。
 
       white-space: nowrap
@@ -53,6 +59,21 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
                         
         this.foodsScroll.scrollToElement(el, 300)
         
+        // 设置图片展示区域可以横向滚动
+       if (this.seller.pics) {
+          let picWidth = 120
+          let margin = 6
+          let width = (picWidth + margin) * this.seller.pics.length - margin
+          this.$refs.picList.style.width = width + 'px'
+          this.$nextTick(() => {
+            if (!this.picScroll) {
+              this.picScroll = new BScroll(this.$refs.picsWrapper, {scrollX: true, eventPassthrough: true})
+            } else {
+              this.picScroll.refresh()
+            }
+          })
+        }
+        
 + export 一个属性解释（个人理解）
     
       export default{
@@ -74,6 +95,13 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
           filters:{
               // 定义过滤器
           },
+          mounted(){
+              // 生命周期钩子，该钩子在服务器端渲染期间不被调用
+          },
+          watch：{
+              // 类型：{ [key: string]: string | Function | Object }
+              // 一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象。Vue 实例将会在实例化时调用 $watch()，遍历 watch 对象的每一个属性。
+          }
           components:{
              // 定义该组件所引用的其他组件
           }

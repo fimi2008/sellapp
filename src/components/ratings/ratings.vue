@@ -62,8 +62,9 @@
   import ratingselect from '../ratingselect/ratingselect.vue'
   import BScroll from 'better-scroll'
   import { formatDate } from '../../common/js/date.js'
+  import api from '../../api/api.js'
 
-  const ERR_OK = 0
+  //  const ERR_OK = 0
   const ALL = 2
 
   export default {
@@ -80,17 +81,25 @@
       }
     },
     created () {
-      this.$http.get('/api/ratings').then(response => {
-        // success callback
-        response = response.body
-        if (response.errno === ERR_OK) {
-          this.ratings = response.data
-          this.$nextTick(() => {
-            this._initScroll()
-          })
-        }
-      }, response => {
-        // error callback
+//      this.$http.get('/api/ratings').then(response => {
+//        // success callback
+//        response = response.body
+//        if (response.errno === ERR_OK) {
+//          this.ratings = response.data
+//          this.$nextTick(() => {
+//            this._initScroll()
+//          })
+//        }
+//      }, response => {
+//        // error callback
+//      })
+      api.ratings(this.seller.id).then(({data}) => {
+        this.ratings = data
+        this.$nextTick(() => {
+          this._initScroll()
+        })
+      }).catch((e) => {
+        console.error(e)
       })
     },
     methods: {
@@ -258,7 +267,7 @@
           .recommend
             line-height: 16px
             font-size: 0
-            .icon-thumb_up, .icon-thumb_down,.recommend-item
+            .icon-thumb_up, .icon-thumb_down, .recommend-item
               vertical-align: top
               margin: 0 8px 4px 0
               font-size: 9px

@@ -326,7 +326,7 @@
       transform: translate3d(0, -100%, 0)
       &.fold-enter-active, &.fold-leave-active //元素插入时过渡状态&元素删除时过渡状态
         transition: all 0.4s linear
-      &.fold-enter, &.fold-leave-to
+      &.fold-enter, &.fold-leave-active
         transform: translate3d(0, 0, 0)
       .list-header
         height: 40px
@@ -382,7 +382,7 @@
     backdrop-filter: blur(10px)
     &.fade-enter-active, &.fade-leave-active //元素插入时过渡状态&元素删除时过渡状态
       transition: all 0.5s linear
-    &.fade-enter, &.fade-leave-to
+    &.fade-enter, &.fade-leave-active
       opacity: 0
       background: rgba(7, 17, 27, 0)
 </style>

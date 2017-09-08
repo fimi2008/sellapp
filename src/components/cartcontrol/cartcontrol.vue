@@ -64,7 +64,7 @@
         transform: rotate(0)
       &.move-enter-active, &.move-leave-active //元素插入时过渡状态&元素删除时过渡状态
         transition: all 0.4s linear
-      &.move-enter, &.move-leave-to //过渡开始状态&过渡结束状态
+      &.move-enter, &.move-leave-active //过渡开始状态&过渡结束状态
         opacity: 0
         transform: translate3d(24px, 0, 0)
         .inner

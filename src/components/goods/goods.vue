@@ -41,7 +41,7 @@
     </div>
     <shopcart ref="shopCart" :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"
               :selectFoods="selectFoods"></shopcart>
-    <food  @add="addFood" :food="selectedFood" ref="food"></food>
+    <food @add="addFood" :food="selectedFood" ref="food"></food>
   </div>
 </template>
 
@@ -50,8 +50,9 @@
   import shopcart from '../shopcart/shopcart.vue'
   import cartcontrol from '../cartcontrol/cartcontrol.vue'
   import food from '../food/food.vue'
+  import api from '../../api/api.js'
 
-  const ERR_OK = 0
+//  const ERR_OK = 0
   export default {
     props: {
       seller: {
@@ -92,19 +93,28 @@
     },
     created () {
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
-      this.$http.get('/api/goods').then(response => {
-        // success callback
-        response = response.body
-        if (response.errno === ERR_OK) {
-          this.goods = response.data
-          this.$nextTick(() => {
-            this._initScroll()
-            this._calculateHeight()
-          })
-        }
-      }, response => {
-        // error callback
+      api.goods(this.seller.id).then(({data}) => {
+        this.goods = data
+        this.$nextTick(() => {
+          this._initScroll()
+          this._calculateHeight()
+        })
+      }).catch((e) => {
+        console.error(e)
       })
+//      this.$http.get('/api/goods').then(response => {
+//        // success callback
+//        response = response.body
+//        if (response.errno === ERR_OK) {
+//          this.goods = response.data
+//          this.$nextTick(() => {
+//            this._initScroll()
+//            this._calculateHeight()
+//          })
+//        }
+//      }, response => {
+//        // error callback
+//      })
     },
     methods: {
       _initScroll () {
@@ -154,9 +164,9 @@
       }
     },
     components: {
-      shopcart: shopcart,
-      cartcontrol: cartcontrol,
-      food: food
+      shopcart,
+      cartcontrol,
+      food
     }
   }
 </script>
